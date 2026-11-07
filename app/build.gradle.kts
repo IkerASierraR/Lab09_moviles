@@ -57,6 +57,7 @@ dependencies {
     implementation (libs.play.services.maps)
     implementation(libs.timber)
     implementation(libs.play.services.location)
+    implementation(libs.places)
 
     testImplementation(libs.junit)
     androidTestImplementation(platform(libs.androidx.compose.bom))

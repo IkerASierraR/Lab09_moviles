@@ -57,11 +57,22 @@ fun MapScreen(mapViewModel: MapViewModel){
             }
         }
     }
+
+
+    LaunchedEffect(userLocation) { userLocation?.let { mapViewModel.fetchNearbyPlaces(context, it) } }
+
+
     // Muestra el mapa de Google
     GoogleMap(
         modifier = Modifier.fillMaxSize(),
         cameraPositionState = cameraPositionState
     ) {
+
+
+        mapViewModel.nearbyPlaces.forEach { Marker(state = rememberMarkerState(position = it.location!!), title = it.displayName) }
+
+
+
         // Si la ubicación del usuario está disponible, colocar un marcador en el mapa
         userLocation?.let {
             Marker(
